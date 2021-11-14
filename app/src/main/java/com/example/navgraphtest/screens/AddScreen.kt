@@ -13,7 +13,7 @@ import com.example.thermalgapcalc_compose.presentation.navigation.NavigationRout
 @Composable
 fun AddScreen(navHostController: NavHostController) {
     Column(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(text = "HistoryScreen")
+        Text(text = "AddScreen")
         Button(onClick = {navHostController.navigate(NavigationRoute.ADDING)}) {
             Text(text = "Adding")
         }

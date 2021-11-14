@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
                                 Text(text = "ADD")
                             }
                             Button(onClick = { navHostController.navigate(NavigationRoute.SETTINGS_ROUTE) }) {
-                                Text(text = "History")
+                                Text(text = "Settings")
                             }
                         }
                     }
