@@ -1,5 +1,6 @@
-package com.example.navgraphtest.bottom_navigation
+package com.example.thermalgapcalc_compose.presentation.ui.bottom_navigation
 
+import android.util.Log
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
@@ -10,6 +11,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 
 @Composable
@@ -20,8 +22,6 @@ fun BottomNavigationBar(navController: NavController) {
         NavigationItem.Settings
     )
     val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentRoute = navBackStackEntry?.destination?.route
-
     BottomNavigation(
     ) {
         itemSList.forEach { item ->
@@ -31,17 +31,22 @@ fun BottomNavigationBar(navController: NavController) {
                 selectedContentColor = Color.White,
                 unselectedContentColor = Color.White.copy(0.4f),
                 alwaysShowLabel = true,
-                selected = currentRoute == item.route,
+                selected = navBackStackEntry?.destination?.parent?.route == item.route,
                 onClick = {
-                    navController.navigate(item.route)
+                    if (!navBackStackEntry?.destination?.parent?.route.equals(item.route)) {
+                        navController.navigate(item.route) {
+                            navController.graph.findStartDestination().id.let {
+                                popUpTo(it) {
+                                    this.saveState = true
+
+                                }
+                            }
+                            launchSingleTop = true
+                            restoreState = true
+                        }
+                    }
                 }
             )
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun BottomNavigationBarPreview() {
-
 }

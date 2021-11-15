@@ -9,7 +9,6 @@ import com.example.thermalgapcalc_compose.presentation.navigation.NavigationRout
 
 fun NavGraphBuilder.settingsNavGraph(navController: NavHostController){
     navigation(startDestination = NavigationRoute.SETTINGS,route=NavigationRoute.SETTINGS_ROUTE){
-        addNavGraph(navController)
         composable(NavigationRoute.SETTINGS) {
             SettingsScreen()
         }

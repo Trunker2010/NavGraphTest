@@ -13,7 +13,6 @@ import com.example.thermalgapcalc_compose.presentation.navigation.NavigationRout
 @ExperimentalFoundationApi
 @RequiresApi(Build.VERSION_CODES.O)
 fun NavGraphBuilder.historyNavGraph(navController: NavHostController) {
-
     navigation(
         startDestination = NavigationRoute.HISTORY,
         route = NavigationRoute.HISTORY_ROUTE

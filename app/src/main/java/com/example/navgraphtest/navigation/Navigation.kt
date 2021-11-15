@@ -23,7 +23,7 @@ import com.example.thermalgapcalc_compose.presentation.navigation.nav_graph.sett
             route = NavigationRoute.ROOT_GRAPH_ROUTE
         ) {
             historyNavGraph(navController = navController)
-            addNavGraph(navController = navController)
             settingsNavGraph(navController = navController)
+            addNavGraph(navController = navController)
         }
     }
